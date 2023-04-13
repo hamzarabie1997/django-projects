@@ -11,19 +11,13 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
-
-from environ import Env
-env = Env()
-# reading .env file
-env.read_env()
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'MY_SCRET_KEY'
-
-
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv()
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
